@@ -1,0 +1,55 @@
+<%- include ("./_header.ejs") %>
+
+
+<div class="container">
+    <a href="/newPost"><button type="button" class="btn btn-primary">Create New Post</button></a>
+  </div>
+
+  <main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <div class="blog-post">
+          <h2 class="blog-post-title">Sample blog post</h2>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-10">
+          <!--  TABLA CON LOS DATOS-->
+
+          <% for (var i=0; i <blogPosts.length; i++){ %>
+        <table class="table table-bordered table-hover">
+          <tbody>
+            <tr>
+              <td> <strong><%= i +1 %> <%= blogPosts[i].title %></strong></td>
+            </tr>
+
+            <tr>
+              <td><%= blogPosts[i].author %></td>
+            </tr>
+            <tr>
+              <td><%= blogPosts[i].post_date %></td>
+            </tr>
+            
+            <tr>
+              <td>
+                <%= blogPosts[i].post_data %>
+              </td>
+            </tr>
+
+        
+            <td>
+              <a class="btn btn-danger" href="/delete/<%= blogPosts[i]._id %>"> Delete</a>
+              <a class="btn btn-info" href="/edit/<%= blogPosts[i]._id %>"> Edit</a>
+            </td>
+        </tbody>
+      </table>
+            <% } %>
+            <hr>
+
+      
+
+
+    </div>
+  </main>
