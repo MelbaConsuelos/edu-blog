@@ -40,5 +40,19 @@ router.post('/edit/:id',   async(req,res) =>{
   res.redirect('/');
 });
 
+// 8
+router.get('/delete/:id',  async (req,res) =>{
+  var blogPost = await BlogPost.findById(req.params.id);
+  res.render('delete', {blogPost});
+
+})
+
+//9
+router.post('/delete/:id',   async(req,res) =>{
+  var id = req.params.id;
+  await BlogPost.deleteOne({_id: id});
+    res.redirect('/');
+});
+
 
 module.exports = router;

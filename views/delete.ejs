@@ -1,0 +1,24 @@
+<%- include ("./partials/_header") %>
+
+<main role="main" class="container">
+    <div class="row">
+      <div class="col-md-8 blog-main">
+        <h2>Are you sure you want to delete this post?</h2>
+        <form action="/delete/<%= blogPost._id %>" method="post">
+          <div class="form-group">
+            <input type="text" class="form-control" name="title" placeholder="Title" value=<%=blogPost.title %>>
+          </div>
+          <div class="form-group">
+            <input type="text" name="author" class="form-control" placeholder="Author" value=<%=blogPost.author %>>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="post_data" cols="100" rows="10"
+              placeholder="Add a Description" ><%=blogPost.post_data %></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+<%- include ("./partials/_footer") %>
