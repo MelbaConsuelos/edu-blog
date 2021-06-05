@@ -1,0 +1,27 @@
+<%- include ("./partials/_header") %>
+
+
+
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8 blog-main">
+      <!--4 -> Regresar a routes-->
+      <form action="/newPost" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="title" placeholder="Title">
+        </div>
+        <div class="form-group">
+          <input type="text" name="author" class="form-control" placeholder="Author">
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" name="post_data" cols="100" rows="10"
+            placeholder="Add a Description"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+
+<%- include ("./partials/_footer") %>
