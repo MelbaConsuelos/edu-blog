@@ -1,0 +1,88 @@
+.homeBanner, .teachersMain, .divQuote{
+    padding:  15vh;
+    /* margin-bottom: 50px; */
+}
+.homeBanner{
+    display: flex;
+}
+.bannerColRight{
+    width: 60%;
+    background-image: url("/img/banner.png");
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+}
+.bannerColLeft{
+    width: 40%;
+    margin: auto;
+}
+a.button1{
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFB700 ;
+    margin:1rem 0.3em 0.3em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFB700 ;
+    text-align:center;
+    transition: all 0.2s;
+    font-size: 20px;
+    }
+a.button1:hover{
+color:white;
+background-color:#FFB700 ;
+}
+
+.teachersMain{
+    text-align: center;
+}
+.singleTeacher{
+    width: 30%;
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+}
+.teacherAvatar{
+    width: 60%;
+    background-color: #ff47fa61;
+    border-radius: 100%;
+    padding: 10%;
+}
+.teachersCards{
+    display: flex;
+}
+.teacherName{
+    font-weight: 600;
+    color: #290951;
+    text-align: center;
+    padding: 10px;
+}
+.teacherTitle{
+    padding:  0 10px;
+}
+#h2-teachers{
+    color: #503890;
+    font-weight: 600;
+    font-size: 50px;
+}
+
+.divQuote{
+    background-color: #432c82;
+    margin: 50px 0;
+}
+
+#quote{
+    padding: 0 35px;
+    color: #eee;
+    font-size: 35px;
+    text-align: center;
+}
+#quoteAuthor{
+    text-align: center;
+    color: #eee;
+}

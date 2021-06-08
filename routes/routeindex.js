@@ -16,6 +16,9 @@ function parseJwt(token) {
   
   return JSON.parse(jsonPayload);
 };
+router.get('/home',async function(req,res){
+  res.render('../views/home.ejs',);
+});
 
 router.get('/all-posts', async function(req,res){
   var blogPosts =  await BlogPost.find();
