@@ -1,55 +1,59 @@
 <%- include ("./_header.ejs") %>
+<link rel="stylesheet" type="text/css" href="../../css/allPosts.css">
 
-
-<div class="container">
+  <div class="container">
     <a href="/newPost"><button type="button" class="btn btn-primary">Create New Post</button></a>
   </div>
 
   <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-8 blog-main">
-        <div class="blog-post">
-          <h2 class="blog-post-title">Sample blog post</h2>
-        </div>
 
-      </div>
+    <div class="list">
+      <!--  TABLA CON LOS DATOS-->
+      
+      <% for (var i=0; i <blogPosts.length; i++){ %>
 
-    </div>
-    <div class="col-md-10">
-          <!--  TABLA CON LOS DATOS-->
+      <% blogPosts[i].post_date = new Date(blogPosts[i].post_date) %>
+        <div class="postCard">
+          
+            <div class="postCardDateColumn">
+              <div class="postCardDate">
+              <%= new Intl.DateTimeFormat("es-MX", {
+                month: "long",
+              }).format(blogPosts[i].post_date).toLocaleUpperCase() %>
+              <hr class="hrDate">
+              <%= new Intl.DateTimeFormat("es-MX", {
+                day: "numeric",
+              }).format(blogPosts[i].post_date) %>
+            </div>
 
-          <% for (var i=0; i <blogPosts.length; i++){ %>
-        <table class="table table-bordered table-hover">
-          <tbody>
-            <tr>
-              <td> <strong><%= i +1 %> <%= blogPosts[i].title %></strong></td>
-            </tr>
+            </div>
 
-            <tr>
-              <td><%= blogPosts[i].author %></td>
-            </tr>
-            <tr>
-              <td><%= blogPosts[i].post_date %></td>
-            </tr>
-            
-            <tr>
-              <td>
+            <div class="postCardMain">
+              <% if (blogPosts[i].img_url) {%>
+                <img class="imgCard" src="<%= blogPosts[i].img_url %>">
+              <% } %>
+              <h2>
+                <%= i +1 %>
+                  <%= blogPosts[i].title %>
+              </h2>
+              <h4>
+                <%= blogPosts[i].author %>
+              </h4>
+              <p>
                 <%= blogPosts[i].post_data %>
-              </td>
-            </tr>
+              </p>
 
-        
-            <td>
+            <div class="PostCardBtns">
               <a class="btn btn-danger" href="/delete/<%= blogPosts[i]._id %>"> Delete</a>
               <a class="btn btn-info" href="/edit/<%= blogPosts[i]._id %>"> Edit</a>
-            </td>
-        </tbody>
-      </table>
-            <% } %>
-            <hr>
+              <a class="btn btn-info" href="/single/<%= blogPosts[i]._id %>"> Ver más</a>
+            </div>
 
-      
-
-
+          </div>
+          </div> 
+          <hr>
+          <% } %>
+           
+        
     </div>
   </main>

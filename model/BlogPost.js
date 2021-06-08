@@ -8,7 +8,9 @@ const PostSchema = Schema({
         type: Date,
         default: Date.now
     }, 
-    post_data: String
+    post_data: String,
+    post_data_long: String,
+    img_url: String,
 
 });
 

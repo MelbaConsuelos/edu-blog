@@ -11,9 +11,17 @@
           <div class="form-group">
             <input type="text" name="author" class="form-control" placeholder="Author" value=<%=blogPost.author %>>
           </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="img_url" placeholder="Image Url" value=<%=blogPost.img_url %>>
+            </div>
+
           <div class="form-group">
             <textarea class="form-control" name="post_data" cols="100" rows="10"
-              placeholder="Add a Description" ><%=blogPost.post_data %></textarea>
+              placeholder="Add a short Description" ><%=blogPost.post_data %></textarea>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" name="post_data_long" cols="100" rows="10"
+              placeholder="Add a long Description" ><%=blogPost.post_data_long %></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Update</button>
         </form>

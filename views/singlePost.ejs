@@ -1,0 +1,47 @@
+<%- include ("./partials/_header") %>
+<link rel="stylesheet" type="text/css" href="../../css/allPosts.css">
+
+
+<div class="postCard">
+          
+    <div class="postCardDateColumn">
+      <div class="postCardDate">
+      <%= new Intl.DateTimeFormat("es-MX", {
+        month: "long",
+      }).format(blogPost.post_date).toLocaleUpperCase() %>
+      <hr class="hrDate">
+      <%= new Intl.DateTimeFormat("es-MX", {
+        day: "numeric",
+      }).format(blogPost.post_date) %>
+    </div>
+
+    </div>
+
+    <div class="postCardMain">
+      <% if (blogPost.img_url) {%>
+        <img class="imgCard" src="<%= blogPost[i].img_url %>">
+      <% } %>
+      <h2>
+
+          <%= blogPost.title %>
+      </h2>
+      <h4>
+        <%= blogPost.author %>
+      </h4>
+      <p>
+        <%= blogPost.post_data %>
+      </p>
+      <p>
+        <%= blogPost.post_data_long %>
+      </p>
+
+    <div class="PostCardBtns">
+      <a class="btn btn-danger" href="/delete/<%= blogPost._id %>"> Delete</a>
+      <a class="btn btn-info" href="/edit/<%= blogPost._id %>"> Edit</a>
+      <a class="btn btn-info" href="/single/<%= blogPost._id %>"> Ver más</a>
+    </div>
+
+  </div>
+  </div> 
+
+<%- include ("./partials/_footer") %>

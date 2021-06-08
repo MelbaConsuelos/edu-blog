@@ -54,5 +54,9 @@ router.post('/delete/:id',   async(req,res) =>{
     res.redirect('/');
 });
 
+router.get('/single/:id', async (req,res) =>{
+  var blogPost = await BlogPost.findById(req.params.id);
+  res.render('../views/singlePost.ejs', {blogPost});
+});
 
 module.exports = router;

@@ -1,0 +1,44 @@
+h1, h2, h3, h4, h5{
+ font-family:Verdana;   
+}
+.list{
+    background-color: #974ccd1a;
+    padding: 30px;
+}
+
+.postCard{
+    display: flex;
+    margin-top: 20px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 30px;
+}
+.postCardDateColumn{
+    width: 10%;
+    margin-left: -10%;
+}
+.postCardMain{
+    width: 100%;
+    padding: 10px;
+}
+.postCardDate{
+    text-align: center;
+    background-color: #974CCD;
+    padding: 1rem;
+    color: white;
+    border-radius: 15px 0px 15px 15px;
+}
+.hrDate{
+    margin: 0;
+    color: white;
+    border: none;
+    height: 1px;
+    background-color:white; 
+
+}
+.imgCard{
+    height: 400px;
+    object-fit: cover;
+    width: 100%;
+    padding: 20px;
+}

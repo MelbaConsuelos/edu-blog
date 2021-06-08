@@ -39,6 +39,7 @@ app.use('/', routes);
 app.use("/user", user);
 //*****new 
 app.use(express.static('public'));
+// app.use(express.static(__dirname + '/public'));
 
 app.listen(app.get('port'), () =>{
     console.log(`server on port ${app.get('port')}`);
