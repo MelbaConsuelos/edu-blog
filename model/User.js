@@ -16,7 +16,13 @@ const UserSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now()
+  },
+  // values: educator/guardian
+  uType: {
+    type: String,
+    required: true
   }
+  
 });
 
 // export model user with UserSchema

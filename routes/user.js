@@ -6,6 +6,19 @@ const router = express.Router();
 
 const User = require("../model/User");
 
+function isValidUser(uType) {
+  if(uType == "educator" || uType == "guardian") {
+    return true;
+  }
+  return false;
+}
+
+router.get("/information", async function(req,res){
+    var account = 
+    console.log(account);
+    res.render('userInfo',{title: 'Account Information'});
+});
+
 router.post(
     "/signup",
     [
@@ -28,7 +41,8 @@ router.post(
         const {
             username,
             email,
-            password
+            password,
+            uType
         } = req.body;
         try {
             let user = await User.findOne({
@@ -39,11 +53,17 @@ router.post(
                     msg: "User Already Exists"
                 });
             }
+            else if(!isValidUser(uType)) {
+              return res.status(400).json({
+                msg: "Invalid User Type"
+              });
+            }
 
             user = new User({
                 username,
                 email,
-                password
+                password,
+                uType
             });
 
             const salt = await bcrypt.genSalt(10);
