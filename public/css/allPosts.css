@@ -59,7 +59,7 @@ background-color:white ;
 }
 .imgCard{
     height: 400px;
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     padding: 20px;
 }

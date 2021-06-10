@@ -42,7 +42,7 @@ router.get('/newPost', async function(req,res){
 router.post('/newPost', async (req,res) =>{
     var blogPost = new BlogPost(req.body);
     await blogPost.save();
-    res.redirect('/');
+    res.redirect('/all-posts');
   });
 
 // EDIT POST
@@ -56,7 +56,7 @@ router.get('/edit/:id', async (req,res) =>{
 router.post('/edit/:id',   async(req,res) =>{
   var id = req.params.id;
   await BlogPost.updateOne({_id: id},req.body );
-  res.redirect('/');
+  res.redirect('/all-posts');
 });
 
 // 8

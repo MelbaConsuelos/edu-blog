@@ -1,8 +1,8 @@
 .homeBanner, .teachersMain, .divQuote{
-    padding:  15vh;
+    padding:  10vh 15vh;
     /* margin-bottom: 50px; */
 }
-.homeBanner{
+.homeBanner, .aboutUs{
     display: flex;
 }
 .bannerColRight{
@@ -14,8 +14,12 @@
     background-size: contain;
     position: relative;
 }
-.bannerColLeft{
+.bannerColLeft, .aboutColLeft{
     width: 40%;
+    margin: auto;
+}
+.aboutColRight{
+    width: 60%;
     margin: auto;
 }
 a.button1{
@@ -85,4 +89,7 @@ background-color:#FFB700 ;
 #quoteAuthor{
     text-align: center;
     color: #eee;
+}
+.aboutUs{
+    padding: 5vh 15vh;;
 }
