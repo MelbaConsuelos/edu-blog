@@ -40,13 +40,38 @@
       </p>
 
     <div class="PostCardBtns">
-      <a class="btn btn-danger" href="/delete/<%= blogPost._id %>"> Delete</a>
-      <a class="btn btn-info" href="/edit/<%= blogPost._id %>"> Edit</a>
+      <div class="PostCardBtns-educator">
+        <a id=btns-educator class="btn btn-danger" href="/delete/<%= blogPost._id %>"> Delete</a>
+        <a id=btns-educator class="btn btn-info" href="/edit/<%= blogPost._id %>"> Edit</a>
+      </div>
       <a class="btn btn-info" href="/single/<%= blogPost._id %>"> Ver más</a>
     </div>
 
   </div>
   </div> 
 </div>
+
+<script>
+  function parseJwt(token) {
+    console.log(token)
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    
+    return JSON.parse(jsonPayload);
+  };
+
+  var accessTokenObj = JSON.parse(localStorage.getItem("token")).token;
+
+  user = parseJwt(accessTokenObj);
+  if(user.user.uType !== 'educator'){
+    var eduBtns = document.getElementsByClassName('PostCardBtns-educator');
+    for (var i = 0; i < eduBtns.length; i++) {
+      eduBtns[i].style.display = "none";
+    }
+  }
+</script>
 
 <%- include ("./partials/_footer") %>

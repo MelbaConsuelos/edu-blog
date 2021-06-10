@@ -22,7 +22,7 @@ router.get('/login',async function(req,res){
 
 router.get('/register',async function(req,res){
   //console.log("User id: " + req.userId);
-  res.render('register',{title: 'register'});
+  res.render('register',{title: 'register', logErrors: undefined});
 });
 
 
@@ -46,9 +46,8 @@ router.post(
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array()
-            });
+          var logErrors=  "Incorrect Signup Information !"
+          return res.render('register',{title: 'register',logErrors})
         }
 
         const {
@@ -62,14 +61,12 @@ router.post(
                 email
             });
             if (user) {
-                return res.status(400).json({
-                    msg: "User Already Exists"
-                });
+              var logErrors=  "User Already Exists"
+              return res.render('login',{title: 'login', errors})
             }
             else if(!isValidUser(uType)) {
-              return res.status(400).json({
-                msg: "Invalid User Type"
-              });
+              var logErrors=  "Invalid User"
+              return res.render('login',{title: 'login', errors})
             }
 
             user = new User({
@@ -83,6 +80,7 @@ router.post(
             user.password = await bcrypt.hash(password, salt);
 
             await user.save();
+            var blogPosts =  await BlogPost.find();
 
             const payload = {
                 user: {
@@ -97,10 +95,7 @@ router.post(
                 },
                 (err, token) => {
                     if (err) throw err;
-                    res.status(200).json({
-                        token,
-                        message: {}
-                    });
+                    res.render('partials/allPosts',{ blogPosts, token });
                 }
             );
         } catch (err) {
@@ -123,7 +118,7 @@ router.post(
       const errors = validationResult(req);
   
       if (!errors.isEmpty()) {
-        var logErrors=  "User Not Exist"
+        var logErrors=  "User Does Not Exist"
         return res.render('login',{title: 'login', errors})
       }
   
@@ -133,7 +128,7 @@ router.post(
           email
         });
         if (!user) {
-          var logErrors=  "User Not Exist"
+          var logErrors=  "User Does Not Exist"
           return res.render('login',{title: 'login',logErrors})
         }
 
@@ -150,7 +145,7 @@ router.post(
           }
         };
         
-        // const hId = user.id
+        var blogPosts =  await BlogPost.find();
 
         jwt.sign(
           payload,
@@ -160,13 +155,14 @@ router.post(
           },
           (err, token) => {
             if (err) throw err;
-            res.redirect('/all-posts')
+            res.render('partials/allPosts',{ blogPosts, token });
+
             // res.status(200).json({
-              //   token,
-              //   message: "login successful"
-              // });
-            }
-          );
+            //   token,
+            //   message: "login successful"
+            // });
+          }
+        );
 
       } catch (e) {
         console.error(e);

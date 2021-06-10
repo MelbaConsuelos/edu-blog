@@ -22,16 +22,13 @@ router.get('/home',async function(req,res){
 
 router.get('/all-posts', async function(req,res){
   var blogPosts =  await BlogPost.find();
-  var hId = "60c1598ebfe5e41c518a0cdc";
-  // localStorage.getItem(token);
-  // var tokenObj = parseJwt(token);
-  // console.log("aaaa", tokenObj.user.id);
-  res.render('../views/partials/allPosts.ejs', {blogPosts, hId});
+  var currToken = undefined;
+  res.render('../views/partials/allPosts.ejs', {blogPosts, currToken});
 });
 
 router.get('/',async function(req,res){
     //console.log("User id: " + req.userId);
-    res.render('index',{title: 'home'});
+    res.render('../views/home.ejs',{title: 'home'});
 });
 
 router.get('/newPost', async function(req,res){
@@ -75,7 +72,8 @@ router.post('/delete/:id',   async(req,res) =>{
 
 router.get('/single/:id', async (req,res) =>{
   var blogPost = await BlogPost.findById(req.params.id);
-  res.render('../views/singlePost.ejs', {blogPost});
+  var currToken = undefined;
+  res.render('../views/singlePost.ejs', {blogPost, currToken});
 });
 
 module.exports = router;
