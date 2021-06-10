@@ -17,7 +17,7 @@ function isValidUser(uType) {
 
 router.get('/login',async function(req,res){
   //console.log("User id: " + req.userId);
-  res.render('login',{title: 'login'});
+  res.render('login',{title: 'login', logErrors: undefined});
 });
 
 router.get('/register',async function(req,res){
@@ -123,9 +123,8 @@ router.post(
       const errors = validationResult(req);
   
       if (!errors.isEmpty()) {
-        return res.status(400).json({
-          errors: errors.array()
-        });
+        var logErrors=  "User Not Exist"
+        return res.render('login',{title: 'login', errors})
       }
   
       const { email, password } = req.body;
@@ -133,20 +132,21 @@ router.post(
         let user = await User.findOne({
           email
         });
-        if (!user)
-          return res.status(400).json({
-            message: "User Not Exist"
-          });
-  
+        if (!user) {
+          var logErrors=  "User Not Exist"
+          return res.render('login',{title: 'login',logErrors})
+        }
+
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch)
-          return res.status(400).json({
-            message: "Incorrect Password !"
-          });
+        if (!isMatch) {
+          var logErrors=  "Incorrect Password !"
+          return res.render('login',{title: 'login',logErrors})
+        }
   
         const payload = {
           user: {
-            id: user.id
+            id: user.id,
+            uType: user.uType
           }
         };
         
@@ -160,9 +160,6 @@ router.post(
           },
           (err, token) => {
             if (err) throw err;
-            // let token2 = JSON.stringify(token);
-            // window.localStorage.setItem('token', JSON.stringify({'token': token2}));
-            // res.render('partials/allPosts',{blogPosts, hId})
             res.redirect('/all-posts')
             // res.status(200).json({
               //   token,

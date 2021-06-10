@@ -44,8 +44,9 @@
               <p>
                 <%= blogPosts[i].post_data %>
               </p>
+              <!--  Validate by user id with token -->
               <%if (hId == "60c1598ebfe5e41c518a0cdc") { %> 
-                <div class="PostCardBtns">
+                <div class="PostCardBtns" id=user-login>
                 <a class="btn btn-danger" href="/delete/<%= blogPosts[i]._id %>"> Delete</a>
                 <a class="btn btn-info" href="/edit/<%= blogPosts[i]._id %>"> Edit</a>
               </div>
