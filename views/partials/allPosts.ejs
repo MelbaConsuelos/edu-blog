@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="../../css/allPosts.css">
 
   <div class="container newPost">
-    <a href="/newPost" class="btn-custom">Create New Post</a>
+    <a href="/newPost" class="btn-custom" id="newPost-educator">Create New Post</a>
   </div>
 
   <main role="main" class="container">
@@ -46,12 +46,12 @@
               </p>
               <!--  Validate by user id with token -->
               <%if (hId == "60c1598ebfe5e41c518a0cdc") { %> 
-                <div class="PostCardBtns" id=user-login>
+                <div class="PostCardBtns" id=btns-educator>
                 <a class="btn btn-danger" href="/delete/<%= blogPosts[i]._id %>"> Delete</a>
                 <a class="btn btn-info" href="/edit/<%= blogPosts[i]._id %>"> Edit</a>
               </div>
               <% } %>
-              <div class="publicPostCardBtns">
+              <div class="publicPostCardBtns" id="btns-all">
                 <a class="btn btn-info" href="/single/<%= blogPosts[i]._id %>"> Ver más</a>
               </div>
           </div>
