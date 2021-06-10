@@ -13,6 +13,17 @@ function isValidUser(uType) {
   return false;
 }
 
+router.get('/login',async function(req,res){
+  //console.log("User id: " + req.userId);
+  res.render('login',{title: 'login'});
+});
+
+router.get('/register',async function(req,res){
+  //console.log("User id: " + req.userId);
+  res.render('register',{title: 'register'});
+});
+
+
 router.get("/information", async function(req,res){
     var account = 
     console.log(account);
@@ -99,7 +110,7 @@ router.post(
 
 
 router.post(
-    "/login",
+    "/signin",
     [
       check("email", "Please enter a valid email").isEmail(),
       check("password", "Please enter a valid password").isLength({
