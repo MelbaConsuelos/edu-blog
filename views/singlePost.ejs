@@ -2,7 +2,9 @@
 <%- include ("./partials/navbar") %>
 
 <link rel="stylesheet" type="text/css" href="../../css/allPosts.css">
+<link rel="stylesheet" type="text/css" href="../../css/singlePost.css">
 
+<main role="main" class="container">
 
 <div class="postCard">
           
@@ -20,8 +22,8 @@
     </div>
 
     <div class="postCardMain">
-      <% if (blogPost.img_url) {%>
-        <img class="imgCard" src="<%= blogPost[i].img_url %>">
+      <% if (blogPost.img_url !== null ) {%>
+        <img class="imgCard" src="<%= blogPost.img_url %>">
       <% } %>
       <h2>
 
@@ -45,5 +47,6 @@
 
   </div>
   </div> 
+</div>
 
 <%- include ("./partials/_footer") %>
