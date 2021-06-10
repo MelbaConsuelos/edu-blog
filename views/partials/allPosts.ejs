@@ -9,7 +9,7 @@
 
     <div class="list">
       <!--  TABLA CON LOS DATOS-->
-      
+
       <% for (var i=0; i <blogPosts.length; i++){ %>
 
       <% blogPosts[i].post_date = new Date(blogPosts[i].post_date) %>
@@ -42,13 +42,15 @@
               <p>
                 <%= blogPosts[i].post_data %>
               </p>
-
-            <div class="PostCardBtns">
-              <a class="btn btn-danger" href="/delete/<%= blogPosts[i]._id %>"> Delete</a>
-              <a class="btn btn-info" href="/edit/<%= blogPosts[i]._id %>"> Edit</a>
-              <a class="btn btn-info" href="/single/<%= blogPosts[i]._id %>"> Ver más</a>
-            </div>
-
+              <%if (hId == "60c1598ebfe5e41c518a0cdc") { %> 
+                <div class="PostCardBtns">
+                <a class="btn btn-danger" href="/delete/<%= blogPosts[i]._id %>"> Delete</a>
+                <a class="btn btn-info" href="/edit/<%= blogPosts[i]._id %>"> Edit</a>
+              </div>
+              <% } %>
+              <div class="publicPostCardBtns">
+                <a class="btn btn-info" href="/single/<%= blogPosts[i]._id %>"> Ver más</a>
+              </div>
           </div>
           </div> 
           <hr>

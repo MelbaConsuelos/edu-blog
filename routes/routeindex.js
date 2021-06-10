@@ -5,9 +5,25 @@ const BlogPost = require('../model/BlogPost');
 
 const User = require("../model/User");
 
+
+function parseJwt(token) {
+  console.log(token)
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+  
+  return JSON.parse(jsonPayload);
+};
+
 router.get('/all-posts', async function(req,res){
   var blogPosts =  await BlogPost.find();
-  res.render('../views/partials/allPosts.ejs', {blogPosts});
+  var hId = "60c1598ebfe5e41c518a0cdc";
+  // localStorage.getItem(token);
+  // var tokenObj = parseJwt(token);
+  // console.log("aaaa", tokenObj.user.id);
+  res.render('../views/partials/allPosts.ejs', {blogPosts, hId});
 });
 
 router.get('/',async function(req,res){

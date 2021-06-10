@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
+const BlogPost = require('../model/BlogPost');
 const User = require("../model/User");
 
 function isValidUser(uType) {
@@ -12,6 +13,7 @@ function isValidUser(uType) {
   }
   return false;
 }
+
 
 router.get('/login',async function(req,res){
   //console.log("User id: " + req.userId);
@@ -97,7 +99,7 @@ router.post(
                     if (err) throw err;
                     res.status(200).json({
                         token,
-                        message: "account created successfully"
+                        message: {}
                     });
                 }
             );
@@ -147,7 +149,9 @@ router.post(
             id: user.id
           }
         };
-  
+        
+        // const hId = user.id
+
         jwt.sign(
           payload,
           "randomString",
@@ -156,12 +160,17 @@ router.post(
           },
           (err, token) => {
             if (err) throw err;
-            res.status(200).json({
-              token,
-              message: "login successful"
-            });
-          }
-        );
+            // let token2 = JSON.stringify(token);
+            // window.localStorage.setItem('token', JSON.stringify({'token': token2}));
+            // res.render('partials/allPosts',{blogPosts, hId})
+            res.redirect('/all-posts')
+            // res.status(200).json({
+              //   token,
+              //   message: "login successful"
+              // });
+            }
+          );
+
       } catch (e) {
         console.error(e);
         res.status(500).json({

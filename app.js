@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+var tokenAux = 'holaa'
+
 // connection to db
 
 mongoose.connect('mongodb://localhost/edu-blog-db',{
