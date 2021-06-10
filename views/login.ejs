@@ -1,3 +1,6 @@
+<%- include ("./partials/_header") %>
+<%- include ("./partials/navbar") %>
+
 <% if (logErrors != undefined) { %>
   <script>
     window.alert("incorrect user or password");
@@ -11,7 +14,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-        <title>Blog Template for Bootstrap</title>
+        <title>Edu-Blog</title>
     
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/blog/">
     
@@ -28,14 +31,15 @@
     
     
       <body>
+        <main role="main" class="container">
 <%  } else {  %>
 
     <%- include ("./partials/_header") %>
 
     <%  }    %>
           <form id="sign-in-form" class="form-signin" action="/user/signin" method="POST">
-            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <img class="mb-4" src="/img/logo.png" alt="" width="72" height="72">
+            <h1>Please sign in</h1>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus>
             <label for="inputPassword" class="sr-only">Password</label>
@@ -59,7 +63,7 @@
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
           
           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        
+        </main>
         </body>
         </html>
 
@@ -68,3 +72,5 @@
     <%- include ("./partials/_footer") %>
 
     <%  }    %>
+
+<%- include ("./partials/_footer") %>
