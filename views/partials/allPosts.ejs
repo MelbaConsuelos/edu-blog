@@ -80,13 +80,17 @@
             return JSON.parse(jsonPayload);
           };
           
-          if(token !== undefined) {
+          if(typeof token != "undefined") {
             var accessTokenObj = JSON.parse(localStorage.getItem("token")).token;
             user = parseJwt(accessTokenObj);
             console.log(user);
           }
           else {
-            user = 'guest';
+            user = {
+              user: {
+                uType: 'guest'
+              }
+            };
           }
 
           if(user.user.uType !== 'educator'){
